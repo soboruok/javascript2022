@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-size: 17px;
+        font-family: arial;
+        background-color: #f4f4f4;
+        line-height: 1.5em;
+      }
+      #container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Jquery</h1>
+    </div>
+    <div id="main">
+      <div id="container">
+        <h3>Mouse Events</h3>
+        <button id="btn1" class="btn">Button 1</button>
+        <button id="btn2">Button 2</button>
+        <p class="para1">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          Reprehenderit, ducimus dignissimos natus amet laborum quis at?
+          Obcaecati inventore tenetur assumenda sit nam temporibus odio iure
+          saepe suscipit ducimus perspiciatis accusamus non doloribus
+          repudiandae repellat quaerat, magnam cupiditate asperiores nobis
+          corrupti sapiente vitae? Incidunt natus cupiditate nostrum fuga
+          deleniti excepturi nulla dolores iure optio dicta voluptatem animi
+          labore fugit, porro et ullam cum commodi earum dolore suscipit,
+          reprehenderit nisi sit molestiae non. Sit harum voluptate distinctio
+          sed delectus doloribus nisi explicabo quaerat velit cum amet, expedita
+          libero molestias cumque aliquam rerum quasi minima tempora provident
+          omnis. Placeat quis quidem aliquid ea.
+        </p>
+        <hr />
+        <form action="" id="form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" />
+          <br />
+          <label for="name">Email</label>
+          <input type="email" id="email" name="email" />
+          <br />
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+          </select>
+          <br />
+          <input type="submit" value="submit" />
+        </form>
+      </div>
+    </div>
+
+    <script>
+      //전체document가 ready될때 아래함수실행한다.
+      $(document).ready(function () {
+        /* 
+        1. btn1을 클릭할때 alert창 실행. 아래두개 동일하게 실행됨.
+        $("#btn1").click(function(){
+            alert('Button Clicked');
+        });
+        $('#btn1').on('click', function(){
+            alert('Button Clicked'); 
+        });
+
+        2. 버튼클릭시, para1 hide, toggle이벤트발생
+        $("#btn1").on("click", function () {
+          //$(".para1").hide();
+          $(".para1").toggle();
+        });
+        $("#btn2").on("click", function () {
+          $(".para1").show();
+        });
+
+        3. 더블클릭시, 아래이벤트발생
+        $("#btn1").dblclick(function () {
+          $(".para1").toggle();
+        });
+
+        4. hover시, 아래메뉴실행
+        $("#btn1").hover(function () {
+          $(".para1").toggle();
+        });
+
+        5. 속성을 가지고 오기
+        $("#btn1").on("click", function (e) {
+          console.log(e.currentTarget.id);
+          console.log(e.currentTarget.innerHTML);
+          console.log(e.currentTarget.outerHTML);
+          console.log(e.currentTarget.className);
+        });
+
+        6. input에 마우스가 focus가되면 Pink, focus가 사라지면, white
+        $("input").focus(function () {
+          $(this).css("background", "pink");
+        });
+
+        $("input").blur(function () {
+          $(this).css("background", "white");
+        });
+
+        7. 키보드입력하면 글자가 나온다.
+        $("input").keyup(function (e) {
+          console.log(e.target.value);
+        });
+
+        8. select태그의 option선택시, 
+        $("select#gender").change(function (e) {
+          alert(e.target.value + "선택했습니다.");
+        });
+        */
+
+        $("#form").submit(function (e) {
+          e.preventDefault();
+          var name = $("input#name").val();
+          var email = $("input#email").val();
+          console.log(name);
+          console.log(email);
+        });
+      });
+    </script>
+  </body>
+</html>

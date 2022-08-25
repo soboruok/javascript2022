@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async and await</title>
+  </head>
+  <body></body>
+  <script>
+    function timer(time) {
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve(time);
+        }, time);
+      });
+    }
+
+    //함수앞에 async를붙히고, await를 사용해서 비동기적임을 나타냄.
+    async function run() {
+      console.log("start");
+      time = await timer(1000); //1초뒤
+      console.log("time" + time);
+      time = await timer(time + 1000); //2초뒤
+      console.log("time" + time);
+      console.log("end");
+    }
+    console.log(run());
+  </script>
+</html>
