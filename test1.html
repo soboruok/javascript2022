@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test #1</title>
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+
+    <style>
+      .main {
+        text-align: center;
+        padding: 50px;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        border: 0;
+        border: 1px solid #b4becb;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .submit {
+        background-color: aliceblue;
+        padding: 10px;
+        width: 100px;
+      }
+    </style>
+    <script>
+      $(function () {
+        var $message = $("#message");
+        $("#submit").on("click", function (e) {
+          //get data
+          var param = {
+            UserName: $("#name").val(),
+            Password: $("#password").val(),
+          };
+
+          $.ajax({
+            type: "POST",
+            url: "",
+            data: param,
+            success: function (result) {
+              console.log("success", result);
+              //if it is 1, then fail, else 0 success
+              if (result.ErrCode === 1) {
+                result.ErrCode = "failed";
+              } else {
+                result.ErrCode = "successful";
+                window.location.href = "";
+              }
+              $message.append("<p>Message : " + result.ErrCode + "</p>");
+            },
+            error: function () {
+              alert("error loading orders");
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <h1>Test #1</h1>
+        <input id="name" type="text" name="UserName" placeholder="Fulle Name" />
+        <input
+          id="password"
+          type="password"
+          name="Password"
+          placeholder="Password"
+        />
+        <button id="submit" type="submit" name="Submit" class="submit">
+          Submit
+        </button>
+        <p id="message" style="padding: 2px; margin: 2px"></p>
+      </div>
+    </div>
+  </body>
+</html>
